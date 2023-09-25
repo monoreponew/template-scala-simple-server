@@ -67,11 +67,11 @@ load(
 container_repositories()
 
 load(
-    "@io_bazel_rules_docker//java:image.bzl",
-    _java_image_repos = "repositories",
+    "@io_bazel_rules_docker//scala:image.bzl",
+    _scala_image_repos = "repositories",
 )
 
-_java_image_repos()
+_scala_image_repos()
 
 # Genrules
 

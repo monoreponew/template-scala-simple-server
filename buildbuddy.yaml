@@ -17,4 +17,4 @@ actions:
         branches:
           - "main"
     bazel_commands:
-        - "run //server:java_service --config=workflows"
+        - "run //server:scala_service --config=workflows"
