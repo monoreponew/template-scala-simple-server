@@ -1,1 +1,1 @@
-# Simple Java Server Template
+# Simple Scala Server Template

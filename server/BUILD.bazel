@@ -1,21 +1,22 @@
-load("@io_bazel_rules_docker//java:image.bzl", "java_image")
+load("@io_bazel_rules_scala//scala:scala.bzl", "scala_binary")
+load("@io_bazel_rules_docker//scala:image.bzl", "scala_image")
 load("@genrules//google_cloud_run:index.bzl", "deploy")
 
 package(default_visibility = ["//visibility:public"])
 
-java_binary(
+scala_binary(
     name = "server",
-    srcs = ["Server.java"],
+    srcs = ["Server.scala"],
     main_class = "Server",
 )
 
-java_image(
+scala_image(
     name = "server_image",
-    srcs = ["Server.java"],
+    srcs = ["Server.scala"],
     main_class = "Server",
 )
 
 deploy(
-    name="java_service",
+    name="scala_service",
     target=":server_image",
 )
