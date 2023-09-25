@@ -1,0 +1,21 @@
+load("@io_bazel_rules_docker//java:image.bzl", "java_image")
+load("@genrules//google_cloud_run:index.bzl", "deploy")
+
+package(default_visibility = ["//visibility:public"])
+
+java_binary(
+    name = "server",
+    srcs = ["Server.java"],
+    main_class = "Server",
+)
+
+java_image(
+    name = "server_image",
+    srcs = ["Server.java"],
+    main_class = "Server",
+)
+
+deploy(
+    name="java_service",
+    target=":server_image",
+)
