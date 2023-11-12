@@ -1,4 +1,5 @@
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_binary")
+load("@io_bazel_rules_docker//scala:image.bzl", "scala_image")
 load("@genrules//google_cloud_run:index.bzl", "deploy")
 
 package(default_visibility = ["//visibility:public"])
@@ -9,7 +10,13 @@ scala_binary(
     main_class = "Server",
 )
 
+scala_image(
+    name = "server_image",
+    srcs = ["Server.scala"],
+    main_class = "Server",
+)
+
 deploy(
     name="scala_service",
-    binary=":server",
+    target=":server_image",
 )
