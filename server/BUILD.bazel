@@ -11,5 +11,6 @@ scala_binary(
 
 deploy(
     name="scala_service",
-    binary=":server",
+    binary=":server_deploy.jar",
+    base_image="gcr.io/distroless/java",
 )
